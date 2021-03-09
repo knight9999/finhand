@@ -1,7 +1,6 @@
 # Final Handler
 
- This module enables to register handlers with name and priority.
- Each handler is executed by the `RunHandlers` command.
+This module allows you to register a handler and execute it at a specific time, similar to the `atexit` in `c++` language.
 
 # Methods
 
@@ -11,9 +10,9 @@
 func AddHandler(f func()) string 
 ```
 
+Register the new handler `f`.
 The return value is a name of handler.
-The name is a uuid string.
-You can remove handlere by this name.
+In this case the name of the handler is a uuid string.
 The priority of this handler is zero.
 
 ## Add new Handler `f` with Priority.
@@ -22,8 +21,9 @@ The priority of this handler is zero.
 func AddHandlerWithPriority(priority int, f func()) string
 ```
 
+Register the new handler `f`.
 The return value is a name of handler.
-The name is a uuid string.
+In this case the name of the handler is a uuid string.
 The handler with the higher priority number will be given priority.
 If they have the same priority value, the first handler to register will have higher priority.
 
@@ -34,7 +34,8 @@ If they have the same priority value, the first handler to register will have hi
 func AddHandlerWithNameAndPriority(name string, priority int, f func()) {
 ```
 
-This can specify the name of handler and priority.
+Register the new handler `f`.
+This can specify the name of the handler and priority.
 There is no return value.
 This overrides the handler with the same name if it exists.
 
@@ -49,6 +50,8 @@ func RemoveHandler(name string)
 ```
 func RunHandlers()
 ```
+
+This clears list of the registered handler.
 
 # Testing
 
